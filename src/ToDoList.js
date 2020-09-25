@@ -3,15 +3,15 @@ import './index.css'
 import ToDoItem from './ToDoItem'
 
 class ToDoList  extends Component {
-  constructor (props) {
-    super(props)
+  constructor (...props) {
+    super(...props)
     this.state = {
       inputValue: '',
       list: []
     }
 
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleBtnClick = this.handleBtnClick.bind(this)
+    // this.handleInputChange = this.handleInputChange.bind(this)
+    // this.handleBtnClick = this.handleBtnClick.bind(this)
     this.handleItemDelete = this.handleItemDelete.bind(this)
   }
 
@@ -29,9 +29,9 @@ class ToDoList  extends Component {
             id="insertArea"
             className='input'
             value={this.state.inputValue}
-            onChange={this.handleInputChange}
+            onChange={(e) => this.handleInputChange(e)}
           />
-          <button onClick={this.handleBtnClick}>提交</button>
+          <button onClick={() => this.handleBtnClick()}>提交</button>
         </div>
         <ul ref={(ul) => {this.ul = ul}}>
           {
