@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import './index.css'
 import ToDoItem from './ToDoItem'
+import axios from 'axios'
 
 class ToDoList  extends Component {
   constructor (...props) {
@@ -40,6 +41,17 @@ class ToDoList  extends Component {
         </ul>
       </Fragment>
     )
+  }
+
+  componentDidMount () {
+    axios.get('/api/todolist')
+      .then((res) => {
+        console.log(res)
+        this.setState(() => ({
+          list: [...res.data]
+        }));
+      })
+      .catch(() => {alert('error')})
   }
 
   getToDoItem () {
